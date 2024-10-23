@@ -1,0 +1,24 @@
+name: Security Scan
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  security_scan:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Trigger GitLab CI/CD Pipeline
+        env:
+          GITLAB_TOKEN: ${{ secrets.GITLAB_TOKEN }}
+        run: |
+          # Replace with your GitLab project ID
+          PROJECT_ID=your_project_id
+          # Trigger the pipeline
+          curl --request POST --header "PRIVATE-TOKEN: $GITLAB_TOKEN" \
+          "https://gitlab.example.com/api/v4/projects/$PROJECT_ID/trigger/pipeline"
