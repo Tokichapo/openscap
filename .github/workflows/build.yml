@@ -182,3 +182,7 @@ jobs:
         path: |-
           build\OpenSCAP*.msi
           build\OpenSCAP*.msi.sha512
+          
+    - name: Snyk
+      uses: snyk/actions@0.4.0
+            
